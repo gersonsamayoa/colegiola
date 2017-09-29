@@ -16,7 +16,9 @@ class Alumnos extends Migration
             $table->increments('id');
             $table->string('nombres');
             $table->string('apellidos');
-            $table->string('codigopersonal')->unique()->required();
+            $table->string('encargado', 120);
+            $table->string('telefono');
+            $table->string('carnet')->unique()->required();
             $table->integer('carrera_id')->unsigned();
             $table->foreign('carrera_id')->references('id')->on('carreras')->onDelete('cascade');
 

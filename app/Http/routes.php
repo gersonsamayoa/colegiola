@@ -16,7 +16,7 @@ Route::get('/', ['as'=>'index', function
     return view('welcome');
 }]);
 
-Route::group(['prefix'=>'admin', 'middleware'=>'auth'], function() {
+Route::group(['prefix'=>'admin','middleware' => 'auth'], function() {
 
 	Route::get('/', ['as'=>'admin.index', function
 	() {
@@ -28,6 +28,12 @@ Route::group(['prefix'=>'admin', 'middleware'=>'auth'], function() {
 		'uses'	=>'CarrerasController@destroy',
 		'as' 	=>'admin.carreras.destroy'
 		]);
+
+		Route::resource('meses', 'MesesController');
+		Route::get('meses/{id}/destroy', [
+			'uses'	=>'MesesController@destroy',
+			'as' 	=>'admin.meses.destroy'
+			]);
 
 	Route::resource('usuarios', 'UsersController');
 	Route::get('usuarios/{id}/destroy', [

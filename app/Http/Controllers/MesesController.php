@@ -42,7 +42,7 @@ class MesesController extends Controller
     {
         $meses=new  mes($request->all());
         $meses->save();
-        flash::Success('Pago Guardado Exitosamente');
+        flash::Success('Mes Guardado Exitosamente');
         return redirect()->route('admin.meses.index');
     }
 
@@ -83,7 +83,7 @@ class MesesController extends Controller
         $meses->Fill($request->all());
         $meses->save();
 
-        Flash::warning('El pago '. $meses->nombre . ' ha sido editada con éxito');
+        Flash::warning('El Mes '. $meses->nombre . ' ha sido editada con éxito');
         return redirect()->route('admin.meses.index');
     }
 

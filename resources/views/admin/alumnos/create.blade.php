@@ -25,8 +25,18 @@
 	</div>
 
 	<div class="form-group">
-	{!!Form::label('codigopersonal', 'Codigo Personal')!!}
-	{!!Form::text('codigopersonal',null,['class'=>'form-control','placeholder'=> 'Codigo Personal', 'required'])!!}
+	{!!Form::label('carnet', 'Carnet')!!}
+	{!!Form::text('carnet',null,['class'=>'form-control','placeholder'=> 'Carnet', 'required'])!!}
+	</div>
+
+	<div class="form-group">
+	{!!Form::label('encargado', 'Encargado')!!}
+	{!!Form::text('encargado',null,['class'=>'form-control','placeholder'=> 'Encargado', 'required'])!!}
+	</div>
+
+	<div class="form-group">
+	{!!Form::label('telefono', 'Telefono')!!}
+	{!!Form::text('telefono',null,['class'=>'form-control','placeholder'=> '####-####', 'required'])!!}
 	</div>
 
 	<div class="form-group">

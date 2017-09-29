@@ -18,6 +18,7 @@
         <li><a href="{{route('admin.carreras.index')}}">Carreras <span class="sr-only">(current)</span></a></li>
         <li><a href="{{route('admin.alumnos.index')}}">Alumnos</a></li>
        <li><a href="{{route('admin.usuarios.index')}}">Usuarios</a></li>
+       <li><a href="{{route('admin.meses.index')}}">Meses <span class="sr-only">(current)</span></a></li>
         <li><a href="{{route('admin.colegiaturas.consultagrado')}}">Consulta x Grado</a></li>
       </ul>
       <ul class="nav navbar-nav navbar-right">

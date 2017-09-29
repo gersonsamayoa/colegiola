@@ -10,7 +10,9 @@
 			<th>ID</th>
 			<th>Fecha</th>
 			<th>Nit</th>
-			<th>Número de Documento</th>
+			<th>Nombre</th>
+			<th>Num. de Documento</th>
+			<th>Num. de Factura</th>
 			<th>Mes</th>
 			<th>Monto</th>
 			<th>Descripción</th>
@@ -23,8 +25,10 @@
 					<td>{{$colegiatura->id}}</td>
 					<td>{{date("d-m-Y", strtotime($colegiatura->fecha))}}</td>
 					<td>{{$colegiatura->nit}}</td>
+					<td>{{$colegiatura->nombre}}</td>
 					<td>{{$colegiatura->numerodocumento}}</td>
-					<td>{{$colegiatura->mes}}</td>
+					<td>{{$colegiatura->numerofactura}}</td>
+					<td>{{$colegiatura->mes->nombre}}</td>
 					<td>Q{{number_format($colegiatura->monto, '2','.' , ',')}}</td>
 					<td>{{$colegiatura->descripcion}}</td>
 					<td>{{$colegiatura->alumno->nombres}}</td>

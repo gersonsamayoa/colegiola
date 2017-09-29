@@ -1,16 +1,12 @@
 <?php
-
 namespace App\Http\Controllers;
-
 use Illuminate\Http\Request;
-
 use App\Http\Requests;
 use App\Http\Requests\AlumnoRequest;
 use App\Http\Controllers\Controller;
-use App\Carrera;
-use App\Alumno;
+use App\carrera;
+use App\alumno;
 use Laracasts\Flash\Flash;
-
 
 class AlumnosController extends Controller
 {
@@ -21,17 +17,19 @@ class AlumnosController extends Controller
      */
     public function index(Request $request)
     {
+
       $carreras=Carrera::selectRaw('CONCAT(grado, " ", nombre) as nombres, id')
       ->lists('nombres', 'id');
 
         if($request->nombres){
-          $alumnos= alumno::search($request->nombres)->orderBy('id', 'ASC')->paginate(4);
+          $alumnos=alumno::search($request->nombres)->orderBy('apellidos', 'ASC')->paginate(4);
             /*return view('admin.alumnos.index')->with ('alumnos', $alumnos);*/
-            return view('admin.alumnos.index', compact('alumnos', 'carreras'));
+            return view('admin.alumnos.index', compact('alumnos', 'carreras', 'ban'));
         }else{
-          $alumnos= alumno::buscar($request->carrera_id)->paginate(4);
+          $alumnos= alumno::buscar($request->carrera_id)->orderBy('apellidos', 'ASC')->paginate(4);
           /*return view('admin.alumnos.index')->with ('alumnos', $alumnos);*/
-          return view('admin.alumnos.index', compact('alumnos', 'carreras'));
+          return view('admin.alumnos.index', compact('alumnos', 'carreras', 'ban'));
+
         }
 
     }

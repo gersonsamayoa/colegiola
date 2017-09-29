@@ -5,8 +5,10 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
+use App\Http\Requests\MesRequest;
 use App\Http\Controllers\Controller;
 use App\alumno;
+use App\mes;
 use App\colegiatura;
 use Laracasts\Flash\Flash;
 use App\carrera;
@@ -30,8 +32,10 @@ class ColegiaturasController extends Controller
      */
     public function create($id)
     {
+      $meses=Mes::orderBy('id', 'ASC')->lists('nombre', 'id');
+
       $alumno=Alumno::Find($id);
-      return view('admin.colegiaturas.create', compact('alumno'));
+      return view('admin.colegiaturas.create', compact('alumno', 'meses'));
     }
 
     /**
@@ -70,10 +74,11 @@ class ColegiaturasController extends Controller
      */
     public function edit($id)
     {
+        $meses=Mes::orderBy('id', 'ASC')->lists('nombre', 'id');
         $colegiaturas=colegiatura::Find($id);
         $alumno=Alumno::Find($colegiaturas->alumno_id);
 
-        return view('admin.colegiaturas.edit', compact('colegiaturas', 'alumno'));
+        return view('admin.colegiaturas.edit', compact('colegiaturas', 'alumno', 'meses'));
     }
 
     /**
@@ -123,12 +128,22 @@ class ColegiaturasController extends Controller
 
    public function consultagrado(Request $request)
   {
+    $meses=array("Inscripción", "Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Graduación");
     $carreras=Carrera::selectRaw('CONCAT(grado, " ", nombre) as nombres, id')
     ->lists('nombres', 'id');
+    if ($request->carrera_id){
     $alumnos=alumno::buscar($request->carrera_id)->get();
-    $colegiaturas= colegiatura::orderby('alumno_id','ASC')->get();
+    $colegiaturas= colegiatura::orderby('mes_id','ASC')->get();
     $groupcolegiaturas=$alumnos->groupby('nombres');
+    }
+    else {
+      {
+        $alumnos=alumno::Search($request->nombres)->get();
+        $colegiaturas= colegiatura::orderby('mes_id','ASC')->get();
+        $groupcolegiaturas=$alumnos->groupby('nombres');
+      }
+    }
 
-    return view('admin.colegiaturas.consultagrado', compact ('colegiaturas', 'groupcolegiaturas', 'alumnos', 'carreras'));
+    return view('admin.colegiaturas.consultagrado', compact ('colegiaturas', 'groupcolegiaturas', 'alumnos', 'carreras', 'meses'));
   }
 }

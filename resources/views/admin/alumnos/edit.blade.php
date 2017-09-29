@@ -14,8 +14,18 @@
 	</div>
 
 	<div class="form-group">
-	{!!Form::label('codigopersonal', 'Codigo Personal')!!}
-	{!!Form::text('codigopersonal',$alumno->codigopersonal,['class'=>'form-control','placeholder'=> 'Codigo Personal', 'required'])!!}
+	{!!Form::label('carnet', 'Carnet')!!}
+	{!!Form::text('carnet',$alumno->carnet,['class'=>'form-control','placeholder'=> 'Carnet', 'required'])!!}
+	</div>
+
+	<div class="form-group">
+	{!!Form::label('encargado', 'Encargado')!!}
+	{!!Form::text('encargado',$alumno->encargado,['class'=>'form-control','placeholder'=> 'Encargado', 'required'])!!}
+	</div>
+
+	<div class="form-group">
+	{!!Form::label('telefono', 'Telefono')!!}
+	{!!Form::text('telefono',$alumno->telefono,['class'=>'form-control','placeholder'=> 'Telefono', 'required'])!!}
 	</div>
 
 

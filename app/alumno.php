@@ -8,7 +8,7 @@ class alumno extends Model
 {
     protected $table ="alumnos";
 
-    protected $fillable =['nombres','apellidos','codigopersonal', 'carrera_id'];
+    protected $fillable =['nombres','apellidos','encargado', 'telefono','carnet', 'carrera_id'];
 
     public function carrera()
     {
@@ -25,8 +25,7 @@ class alumno extends Model
         return $query->where('nombres', 'LIKE', "%$nombres%");
     }
 
-    public function scopeBuscar($query, $carrera_id)
-    {
+    public function scopeBuscar($query, $carrera_id){
       return $query->where('carrera_id', 'LIKE', "%$carrera_id%");
     }
 

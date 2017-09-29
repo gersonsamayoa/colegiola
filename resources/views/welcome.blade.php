@@ -1,6 +1,6 @@
 @extends('admin.template.main')
 
-@section('title', '') 
+@section('title', '')
 
 
 @section('content')
@@ -29,6 +29,3 @@ button">Ver Alumnos &raquo;</a></p>
 <hr>
 
 @endsection
-
-
-
